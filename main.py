@@ -52,6 +52,9 @@ def do_pvh(massive_of_vert, graph, num_of_vert):
     print("Таблица расстояний: ")
     pprint(distances_dig, width=1)
 
+    print("Конечный результат изображен на экране:")
+    print_graph(graph, color_of_nodes)
+
 
 def print_graph(graph, color_of_nodes):
     my_pos = nx.spring_layout(graph, seed=100)
