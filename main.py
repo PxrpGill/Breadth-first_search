@@ -32,6 +32,8 @@ def do_pvh(massive_of_vert, graph, num_of_vert):
 
         print(queue)
         print_graph(graph, color_of_nodes)
+
+        #Окрашивание обработанных вершин
         queue_del = queue[0]
         color_of_nodes[queue_del] = "yellow"
 
