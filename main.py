@@ -100,6 +100,7 @@ def main():
 
     elif tmp == 2:
         print("###Cоздание графа###")
+        print("Граф: неориентированный")
         massive_of_vert = {0: [1, 6, 7, 11],
                            1: [0, 2, 3, 5],
                            2: [1],
@@ -117,6 +118,27 @@ def main():
         print("Список доступных вершин:", mas, "\n")
 
         graph = nx.Graph(massive_of_vert)
+        graph.add_nodes_from(massive_of_vert.keys())
+        do_pvh(massive_of_vert, graph, len(mas))
+
+        print("Граф: ориентированный:")
+        massive_of_vert = {0: [1, 6, 7, 11],
+                           1: [2, 3, 5],
+                           2: [],
+                           3: [2, 4],
+                           4: [],
+                           5: [],
+                           6: [7, 10],
+                           7: [9],
+                           8: [],
+                           9: [],
+                           10: [],
+                           11: [8]}
+
+        mas = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
+        print("Список доступных вершин:", mas, "\n")
+
+        graph = nx.DiGraph(massive_of_vert)
         graph.add_nodes_from(massive_of_vert.keys())
         do_pvh(massive_of_vert, graph, len(mas))
 
