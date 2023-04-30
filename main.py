@@ -5,6 +5,15 @@ from matplotlib import pyplot as plt
 from collections import deque
 
 
+def get_mass_of_verts(distances_dig, summ):
+    tmp = []
+    for key, value in distances_dig.items():
+        if value == summ:
+            tmp.append(key)
+
+    return tmp
+
+
 def do_pvh(massive_of_vert, graph, num_of_vert):
     for k, v in massive_of_vert.items(): #Создание дорог к вершинам графа
         graph.add_edges_from(([(k, t) for t in v]))
@@ -53,7 +62,18 @@ def do_pvh(massive_of_vert, graph, num_of_vert):
     pprint(distances_dig, width=1)
 
     print("Конечный результат изображен на экране:")
+    tmp_dict = {i: set() for i in range(num_of_vert)}
+    tmp_dict[0] = [None]
+    graph_2 = nx.Graph()
+    graph_2.add_node(0)
+
+    for key, value, in massive_of_vert.items():
+        for key_, value_ in distances_dig.items():
+            for element in value_:
+                
+
     print_graph(graph, color_of_nodes)
+    print_graph(graph_2, color_of_nodes)
 
 
 def print_graph(graph, color_of_nodes):
@@ -121,7 +141,7 @@ def main():
         graph.add_nodes_from(massive_of_vert.keys())
         do_pvh(massive_of_vert, graph, len(mas))
 
-        print("Граф: ориентированный:")
+        """"print("Граф: ориентированный:")
         massive_of_vert = {0: [1, 6, 7, 11],
                            1: [2, 3, 5],
                            2: [],
@@ -140,7 +160,7 @@ def main():
 
         graph = nx.DiGraph(massive_of_vert)
         graph.add_nodes_from(massive_of_vert.keys())
-        do_pvh(massive_of_vert, graph, len(mas))
+        do_pvh(massive_of_vert, graph, len(mas))"""
 
 
 main()
